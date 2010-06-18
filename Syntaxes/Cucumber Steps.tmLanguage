@@ -6,6 +6,10 @@
 	<array>
 		<string>steps.rb</string>
 	</array>
+        <key>foldingStartMarker</key>
+        <string>^\s*\b(Given|When|Then|def)</string>
+        <key>foldingStopMarker</key>
+        <string>^\s*(end)$</string>
 	<key>keyEquivalent</key>
 	<string>^~C</string>
 	<key>name</key>
