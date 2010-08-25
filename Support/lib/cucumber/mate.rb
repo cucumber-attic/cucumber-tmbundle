@@ -1,29 +1,35 @@
 # This is based on the official RSpec tm-bundle
 require 'rubygems'
 
-ENV['TM_PROJECT_DIRECTORY'] ||= File.dirname(ENV['TM_FILEPATH'])
-rspec_rails_plugin = File.join(ENV['TM_PROJECT_DIRECTORY'],'vendor','plugins','rspec','lib')
-
-if File.exist?(File.join(ENV['TM_PROJECT_DIRECTORY'], 'Gemfile'))
-  require "rubygems"
-  require "bundler"
-  Bundler.setup
-elsif File.directory?(rspec_rails_plugin)
-  $LOAD_PATH.unshift(rspec_rails_plugin)
-elsif ENV['TM_RSPEC_HOME']
-  rspec_lib = File.join(ENV['TM_RSPEC_HOME'], 'lib')
-  unless File.directory?(rspec_lib)
-    raise "TM_RSPEC_HOME points to a bad location: #{ENV['TM_RSPEC_HOME']}"
+if ENV['TM_PROJECT_DIRECTORY']
+  rspec_rails_plugin = File.join(ENV['TM_PROJECT_DIRECTORY'],'vendor','plugins','rspec','lib')
+  rspec_merb_gem = (merb_dir = (Dir["#{ENV['TM_PROJECT_DIRECTORY']}/gems/gems/rspec*"].first || '')) && File.join(merb_dir, "lib")
+  bundler_gemfile = File.join(ENV['TM_PROJECT_DIRECTORY'], 'Gemfile')
+  if File.exists?(bundler_gemfile)
+    require "bundler"
+    bundle_path = (File.read(bundler_gemfile) =~ (/bundle_path[ (]+['"](.*?)['"]/) && $1) || ".bundle"
+    if File.exist?(File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment"))
+      require File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment")
+    else
+      Bundler.setup
+    end
+  elsif File.directory?(rspec_rails_plugin)
+    $LOAD_PATH.unshift(rspec_rails_plugin)
+  elsif File.directory?(rspec_merb_gem)
+    $LOAD_PATH.unshift(rspec_merb_gem)
+  elsif ENV['TM_RSPEC_HOME']
+    rspec_lib = File.join(ENV['TM_RSPEC_HOME'], 'lib')
+    unless File.directory?(rspec_lib)
+      raise "TM_RSPEC_HOME points to a bad location: #{ENV['TM_RSPEC_HOME']}"
+    end
+    $LOAD_PATH.unshift(rspec_lib)
   end
-  $LOAD_PATH.unshift(rspec_lib)
 end
-
 begin
-  require 'spec'
+  require 'rspec' 
 rescue LoadError
-  require 'rspec/core'
+  require 'spec'
 end
-
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 require "cucumber/mate/feature_helper"
 require "cucumber/mate/runner"
