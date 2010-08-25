@@ -6,8 +6,13 @@ if ENV['TM_PROJECT_DIRECTORY']
   rspec_merb_gem = (merb_dir = (Dir["#{ENV['TM_PROJECT_DIRECTORY']}/gems/gems/rspec*"].first || '')) && File.join(merb_dir, "lib")
   bundler_gemfile = File.join(ENV['TM_PROJECT_DIRECTORY'], 'Gemfile')
   if File.exists?(bundler_gemfile)
+    require "bundler"
     bundle_path = (File.read(bundler_gemfile) =~ (/bundle_path[ (]+['"](.*?)['"]/) && $1) || ".bundle"
-    require File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment")
+    if File.exist?(File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment"))
+      require File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment")
+    else
+      Bundler.setup
+    end
   elsif File.directory?(rspec_rails_plugin)
     $LOAD_PATH.unshift(rspec_rails_plugin)
   elsif File.directory?(rspec_merb_gem)
@@ -20,8 +25,11 @@ if ENV['TM_PROJECT_DIRECTORY']
     $LOAD_PATH.unshift(rspec_lib)
   end
 end
-require 'spec'
-
+begin
+  require 'rspec' 
+rescue LoadError
+  require 'spec'
+end
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 require "cucumber/mate/feature_helper"
 require "cucumber/mate/runner"
