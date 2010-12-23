@@ -49,7 +49,8 @@ module Cucumber
           argv << @cucumber_opts
         end
         in_project_dir do
-          @output << %Q{Running: #{full_command = "#{RUBY_BIN} #{command} #{@file.rake_task} #{argv.join(' ')}"} \n}
+          #@output << %Q{Running: #{full_command = "#{RUBY_BIN} #{command} #{@file.rake_task} #{argv.join(' ')}"} \n}
+          @output << %Q{Running: #{full_command = "cucumber FEATURE=#{@file.full_file_path.gsub(" ", "\\ ")} --format=html"} \n}
           @output << Kernel.system(full_command)
         end
       end
