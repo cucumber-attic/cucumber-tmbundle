@@ -7,10 +7,12 @@
 	<key>command</key>
 	<string>#!/usr/bin/env ruby
 
+require "#{ENV['TM_SUPPORT_PATH']}/lib/textmate"
 require ENV['TM_BUNDLE_SUPPORT'] + "/lib/cucumber/mate/feature_helper"
 runner = Cucumber::Mate::Runner.new(STDOUT, ENV['TM_PROJECT_DIRECTORY'], ENV['TM_FILEPATH'], ENV['TM_CUCUMBER_BIN'], ENV['TM_CUCUMBER_OPTS'])
 
 runner.autoformat_feature
+TextMate::rescan_project
 
 </string>
 	<key>fallbackInput</key>
