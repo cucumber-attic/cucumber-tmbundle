@@ -6,9 +6,14 @@ if ENV['TM_PROJECT_DIRECTORY']
   rspec_merb_gem = (merb_dir = (Dir["#{ENV['TM_PROJECT_DIRECTORY']}/gems/gems/rspec*"].first || '')) && File.join(merb_dir, "lib")
   bundler_gemfile = File.join(ENV['TM_PROJECT_DIRECTORY'], 'Gemfile')
   if File.exists?(bundler_gemfile)
+    require 'bundler'
     bundle_path = (File.read(bundler_gemfile) =~ (/bundle_path[ (]+['"](.*?)['"]/) && $1) || ".bundle"
     bundler_environment_file = File.join(ENV['TM_PROJECT_DIRECTORY'], bundle_path, "environment")
-    require bundler_environment_file if File.exists?(bundler_environment_file)
+    if File.exists?(bundler_environment_file)
+      require bundler_environment_file 
+    else
+      Bundler.setup
+    end
   elsif File.directory?(rspec_rails_plugin)
     $LOAD_PATH.unshift(rspec_rails_plugin)
   elsif File.directory?(rspec_merb_gem)
@@ -22,8 +27,9 @@ if ENV['TM_PROJECT_DIRECTORY']
   end
 end
 begin
-  require 'spec'
+  require 'rspec'
 rescue LoadError
+  require 'spec'
 end
 
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..')))
