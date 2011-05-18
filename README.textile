@@ -25,7 +25,7 @@ For a better HTML output please see "this plugin":http://robaldred.co.uk/2009/08
 
 
 h3. TODO:
-* Rethink Alternative-File Command to avoid encouraging "feature coupled steps.":http://wiki.github.com/aslakhellesoy/cucumber/feature-coupled-steps-antipattern
+* Rethink Alternative-File Command to avoid encouraging "feature coupled steps.":http://wiki.github.com/cucumber/cucumber/feature-coupled-steps-antipattern
 * Navigation Commands
 ** From a step definition be able to pull up a list of features using that step and to jump to them.
 * Automatically create template step file with pending steps based on the steps used in the feature.
@@ -38,7 +38,7 @@ h2. Installation
 <pre>
 mkdir -p ~/Library/Application\ Support/TextMate/Bundles/
 cd ~/Library/Application\ Support/TextMate/Bundles
-git clone git://github.com/aslakhellesoy/cucumber-tmbundle.git Cucumber.tmbundle
+git clone git://github.com/cucumber/cucumber-tmbundle.git Cucumber.tmbundle
 osascript -e 'tell app "TextMate" to reload bundles'
 </pre>
 
