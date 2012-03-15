@@ -10,9 +10,11 @@ This is the official TextMate bundle for Cucumber. Installation:
 
 To install the color themes for the syntax highlighting, install the as follows:
 
-    open color_themes/Cobalt.tmTheme
-    open color_themes/Sunburst.tmTheme
-    open color_themes/Vibrant\ Ink.tmTheme
+    open Themes/Cobalt.tmTheme
+    open Themes/Sunburst.tmTheme
+    open Themes/Vibrant\ Ink.tmTheme
+	
+(In Textmate 2 Alpha, this step is unnecessary, as the themes will be picked up automatically from the bundle.)
 
 Adaptations of other themes is welcome!
 
