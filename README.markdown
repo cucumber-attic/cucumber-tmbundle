@@ -8,11 +8,11 @@ This is the official TextMate bundle for Cucumber. Installation:
     git clone git://github.com/cucumber/cucumber-tmbundle.git Cucumber.tmbundle
     osascript -e 'tell app "TextMate" to reload bundles'
 
-To install the color themes for the syntax highlighting, install the as follows:
+To install the color themes for the syntax highlighting, install them as follows:
 
-    open color_themes/Cobalt.tmTheme
-    open color_themes/Sunburst.tmTheme
-    open color_themes/Vibrant\ Ink.tmTheme
+    open Cucumber.tmbundle/color_themes/Cobalt.tmTheme
+    open Cucumber.tmbundle/color_themes/Sunburst.tmTheme
+    open Cucumber.tmbundle/color_themes/Vibrant\ Ink.tmTheme
 
 Adaptations of other themes is welcome!
 
