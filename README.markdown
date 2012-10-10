@@ -1,10 +1,19 @@
 Textmate Bundle for Cucumber
 ============================
 
-This is the official TextMate bundle for Cucumber. Installation:
+This is the official TextMate bundle for Cucumber.
+
+Installation for TextMate:
 
     mkdir -p ~/Library/Application\ Support/TextMate/Bundles/
     cd ~/Library/Application\ Support/TextMate/Bundles
+    git clone git://github.com/cucumber/cucumber-tmbundle.git Cucumber.tmbundle
+    osascript -e 'tell app "TextMate" to reload bundles'
+
+Installation for TextMate 2:
+
+    mkdir -p ~/Library/Application\ Support/Avian/Bundles/
+    cd ~/Library/Application\ Support/Avian/Bundles
     git clone git://github.com/cucumber/cucumber-tmbundle.git Cucumber.tmbundle
     osascript -e 'tell app "TextMate" to reload bundles'
 
