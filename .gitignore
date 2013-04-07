@@ -2,3 +2,5 @@
 *.swp
 .rvmrc
 coverage
+.bundle
+vendor/ruby
