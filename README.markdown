@@ -6,10 +6,9 @@ This is the official TextMate bundle for Cucumber.
 Installation
 ------------
 
-    mkdir -p ~/Library/Application\ Support/TextMate/Bundles/
-    cd ~/Library/Application\ Support/TextMate/Bundles
+    mkdir -p ~/Library/Application\ Support/Avian/Bundles/
+    cd ~/Library/Application\ Support/Avian/Bundles
     git clone git://github.com/cucumber/cucumber-tmbundle.git Cucumber.tmbundle
-    osascript -e 'tell app "TextMate" to reload bundles'
 
 To install the color themes for the syntax highlighting:
 
@@ -60,6 +59,7 @@ The Cucumber TextMate Bundle is currently maintained by Andrew Premdas.
 * **Ashley Moran** - Improved Align Table Cells command
 * **Jari Bakken** - Syntax Highlighting improvements, include support for `@tags`.
 * **Chris Hoffman** - Improved Step Definition grammar to handle string interpolation when calling other steps.
+* **Rick Jones** - Updated to work with TextMate 2.
 
 TODO
 ====

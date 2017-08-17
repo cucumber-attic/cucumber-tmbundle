@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rspec/core'
 
-ENV['TM_SUPPORT_PATH'] = '/Applications/TextMate.app/Contents/SharedSupport/Support'
+ENV['TM_SUPPORT_PATH'] = '~/Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle/Support/shared' unless ENV.has_key?('TM_BUNDLE_SUPPORT')
 
 RSpec.configure do |c|
   c.include(Module.new do
