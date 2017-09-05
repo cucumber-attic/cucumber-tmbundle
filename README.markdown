@@ -16,6 +16,7 @@ To install the color themes for the syntax highlighting:
     open Cucumber.tmbundle/color_themes/Cobalt.tmTheme
     open Cucumber.tmbundle/color_themes/Sunburst.tmTheme
     open Cucumber.tmbundle/color_themes/Vibrant\ Ink.tmTheme
+    open Cucumber.tmbundle/color_themes/Bespin.tmTheme
 
 Adaptations of other themes is welcome!
 
