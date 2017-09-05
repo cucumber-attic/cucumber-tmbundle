@@ -7,7 +7,7 @@
 		<string>feature</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string><%= Gherkin::I18n.keyword_regexp(:feature) %>(.*)</string>
+	<string>(<%= Gherkin::I18n.keyword_regexp(:feature) %>):!(.*)</string>
 	<key>foldingStartMarker</key>
 	<string>^\s*\b(<%= Gherkin::I18n.keyword_regexp(:background, :scenario, :scenario_outline, :examples) %>)</string>
 	<key>foldingStopMarker</key>
